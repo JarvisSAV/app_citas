@@ -10,9 +10,15 @@ function Main() {
 
     const [modalFormulario, setModalFormulario] = useState(false)
     const [pacientes, setPacientes] = useState(data)
+    const [paciente, setPaciente] = useState({})
 
     function handlePress() {
         setModalFormulario(!modalFormulario)
+    }
+
+    const editar = (paciente) => {
+        setPaciente(paciente)
+        handlePress()
     }
 
     return (
@@ -50,10 +56,10 @@ function Main() {
                                             <StyleText fontSize='subheading'>Propietario: {paciente.propietario}</StyleText>
                                         </View>
                                         <View style={styles.containerButton}>
-                                            <TouchableOpacity style={styles.button}>
+                                            <TouchableOpacity style={styles.buttonEliminar}>
                                                 <Text style={styles.cardHeaderText}>Eliminar</Text>
                                             </TouchableOpacity>
-                                            <TouchableOpacity style={styles.button} onPress={handlePress}>
+                                            <TouchableOpacity style={styles.buttonEditar} onPress={()=>{editar(paciente)}}>
                                                 <Text style={styles.cardHeaderText}>Editar</Text>
                                             </TouchableOpacity>
                                         </View>
@@ -64,7 +70,7 @@ function Main() {
                 }
             </View>
 
-            <ModalFormulario isOpen={modalFormulario} closeModal={handlePress} setPacientes={setPacientes} />
+            <ModalFormulario isOpen={modalFormulario} closeModal={handlePress} setPacientes={setPacientes} paciente={paciente} />
         </View>
     )
 }
@@ -76,6 +82,8 @@ const data = [
         propietario: 'Propietario 1',
         email: 'Email 1',
         fecha: 'Fecha 1',
+        telefono: 'Telefono 1',
+        sintomas: 'Sintomas 1',
     },
     {
         id: 2,
@@ -83,13 +91,17 @@ const data = [
         propietario: 'Propietario 1',
         email: 'Email 1',
         fecha: 'Fecha 1',
+        telefono: 'Telefono 1',
+        sintomas: 'Sintomas 1',
     },
     {
         id: 3,
-        paciente: 'Paciente 1',
-        propietario: 'Propietario 1',
-        email: 'Email 1',
-        fecha: 'Fecha 1',
+        paciente: 'El Firulais',
+        propietario: 'El Chema',
+        email: 'chemamo@gmail.com',
+        fecha: '2021-05-10',
+        telefono: '1234567890',
+        sintomas: 'Tos de perro',
     },
 ]
 export default Main

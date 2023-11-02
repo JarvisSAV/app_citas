@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { Animated, View, TextInput, Text, Easing } from 'react-native'
 
 import { styles } from './styles'
@@ -11,6 +11,10 @@ const FloatingLabelInput = ({ label, onChangeText, ...props }) => {
 
     const fadeAnim = useRef(new Animated.Value(0)).current
     const fontSizeAnim = useRef(new Animated.Value(17)).current;
+
+    useEffect(() => {
+        console.log()
+    }, [])
 
     const handleFocus = () => {
         setIsFocused(true)

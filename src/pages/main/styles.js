@@ -9,6 +9,24 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         paddingTop: Constants.statusBarHeight + 5,
     },
+    buttonEliminar: {
+        backgroundColor: 'red',
+        borderRadius: 4,
+        margin: 15,
+        height: 42,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+    },
+    buttonEditar: {
+        backgroundColor: 'green',
+        borderRadius: 4,
+        margin: 15,
+        height: 42,
+        justifyContent: 'center',
+        alignItems: 'center',
+        paddingHorizontal: 20,
+    },
     button: {
         backgroundColor: '#7159c1',
         borderRadius: 4,
@@ -62,5 +80,4 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
         alignItems: 'center',
     },
-
 })

@@ -12,7 +12,7 @@ const month = date.getMonth() + 1
 const year = date.getFullYear()
 const startDate = `${year}/${month}/${day}`
 
-function ModalFormulario({ isOpen, closeModal, setPacientes }) {
+function ModalFormulario({ isOpen, closeModal, setPacientes, paciente }) {
 
     const [open, setOpen] = useState(false)
     const [errors, setErrors] = useState({})
@@ -24,6 +24,13 @@ function ModalFormulario({ isOpen, closeModal, setPacientes }) {
         fecha: startDate,
         sintomas: '',
     })
+
+    useEffect(() => {
+        if (paciente) {
+            setFormData(paciente)
+            console.log(formData.sintomas)
+        }
+    }, [paciente])
 
     const handleInputChange = (name, value) => {
         setFormData({ ...formData, [name]: value });
@@ -95,31 +102,31 @@ function ModalFormulario({ isOpen, closeModal, setPacientes }) {
             <Modal visible={isOpen} animationType='slide'>
                 <View style={styles.container}>
                     <FloatingLabelInput
-                        label="Nombre del paciente"
                         style={styles.input}
+                        value={formData.paciente}
                         onChangeText={(text) => handleInputChange('paciente', text)}
                     />
                     {errors.paciente && <Text style={styles.errorText} >{errors.paciente}</Text>}
 
                     <FloatingLabelInput
-                        label="Nombre del propietario"
                         style={styles.input}
+                        value={formData.propietario}
                         onChangeText={(text) => handleInputChange('propietario', text)}
                     />
                     {errors.propietario && <Text style={styles.errorText} >{errors.propietario}</Text>}
 
                     <FloatingLabelInput
-                        label="Email del propietario"
                         keyboardType='email-address'
                         style={styles.input}
+                        value={formData.email}
                         onChangeText={(text) => handleInputChange('email', text)}
                     />
                     {errors.email && <Text style={styles.errorText} >{errors.email}</Text>}
 
                     <FloatingLabelInput
-                        label="Teléfono del propietario"
                         keyboardType='numeric'
                         style={styles.input}
+                        value={formData.telefono}
                         onChangeText={(text) => handleInputChange('telefono', text)}
                     />
                     {errors.telefono && <Text style={styles.errorText} >{errors.telefono}</Text>}
@@ -131,8 +138,8 @@ function ModalFormulario({ isOpen, closeModal, setPacientes }) {
                     {errors.fecha && <Text style={styles.errorText} >{errors.fecha}</Text>}
 
                     <FloatingLabelInput
-                        label="Sintomas"
                         style={styles.input}
+                        value={formData.sintomas}
                         onChangeText={(text) => handleInputChange('sintomas', text)}
                     />
                     {errors.sintomas && <Text style={styles.errorText} >{errors.sintomas}</Text>}
